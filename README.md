@@ -6,7 +6,7 @@ require "HTTPClient.php";
 $result = HTTPClient::request('https://github.com');
 ```
 
-## fddoser
+## fddoser.php
 Send requests to some url in parallel processes
 
 ### Usage
