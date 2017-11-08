@@ -1,13 +1,15 @@
 {
-    "name": "effus/php-tools",
-    "type": "package",
-    "license": "GNU",
-    "authors": [
-        {
-            "name": "effus",
-            "email": "effusps@gmail.com"
-        }
-    ],
-    "minimum-stability": "dev",
-    "require": {}
+  "name": "effus/php-tools",
+  "type": "package",
+  "license": "GNU",
+  "authors": [
+    {
+      "name": "effus",
+      "email": "effusps@gmail.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "ext-curl": "*"
+  }
 }

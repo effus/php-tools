@@ -1,5 +1,7 @@
 <?php
 
+namespace PhpTools;
+
 /**
  * Class HttpClient
  */
@@ -16,11 +18,11 @@ class HttpClient
      */
     static function request(
         $url,
-        $body=null,
-        $headers=array(),
-        $method='GET',
-        $timeout=30,
-        $agent='Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:47.0) Gecko/20100101 Firefox/47.0'
+        $body = null,
+        $headers = array(),
+        $method = 'GET',
+        $timeout = 30,
+        $agent = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:47.0) Gecko/20100101 Firefox/47.0'
     ) {
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -30,13 +32,13 @@ class HttpClient
             curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
         }
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 1);
-        curl_setopt($curl,CURLOPT_TIMEOUT,$timeout);
+        curl_setopt($curl, CURLOPT_TIMEOUT, $timeout);
         if ($body) {
             curl_setopt($curl, CURLOPT_POST, true);
             curl_setopt($curl, CURLOPT_POSTFIELDS, $body);
         }
         if ($method!='GET' || $method!='POST') {
-            curl_setopt($curl,CURLOPT_CUSTOMREQUEST,$method);
+            curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
         }
         $json = curl_exec($curl);
         $info = curl_getinfo($curl);
@@ -49,7 +51,8 @@ class HttpClient
      * @param $destination
      * @return mixed
      */
-    static function download($url,$destination) {
+    static function download($url, $destination)
+    {
         $ch = curl_init($url);
         curl_setopt($ch, CURLOPT_NOBODY, true);
         curl_exec($ch);
@@ -73,7 +76,8 @@ class HttpClient
      * @param $postfields
      * @return mixed
      */
-    static function upload($source,$url,$postfields) {
+    static function upload($source, $url, $postfields)
+    {
         $curl = curl_init();
         $fn = basename($source);
         $source = realpath($source);
