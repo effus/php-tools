@@ -5,7 +5,6 @@ use PhpTools\HttpClient;
 
 class Grabber
 {
-
     static $instance;
     private $links;
 
@@ -71,7 +70,7 @@ class Grabber
     public function grab()
     {
         if (!$this->links) {
-            throw new \Exception('Not link to grab');
+            throw new \Exception('No links to grab');
         }
         $out = [];
         foreach ($this->links as $_link) {

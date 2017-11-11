@@ -24,7 +24,8 @@ class HttpClient
         $headers = array(),
         $method = 'GET',
         $timeout = 30,
-        $agent = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:47.0) Gecko/20100101 Firefox/47.0'
+        $agent = 'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:47.0) Gecko/20100101 Firefox/47.0',
+        $otherOpts = []
     ) {
         try {
             $curl = curl_init();
@@ -42,6 +43,11 @@ class HttpClient
             }
             if ($method!='GET' || $method!='POST') {
                 curl_setopt($curl, CURLOPT_CUSTOMREQUEST, $method);
+            }
+            if ($otherOpts) {
+                foreach ($otherOpts as $_opt) {
+                    \curl_setopt($curl, $_opt);
+                }
             }
             $body = curl_exec($curl);
             if ($err = curl_error($ch)) {
