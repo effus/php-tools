@@ -50,7 +50,7 @@ class HttpClient
                 }
             }
             $body = curl_exec($curl);
-            if ($err = curl_error($ch)) {
+            if ($err = curl_error($curl)) {
                 throw new \Exception($err);
             }
             $out = new HTTPResponse($curl, $body);
